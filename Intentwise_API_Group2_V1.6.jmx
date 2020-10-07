@@ -1,0 +1,2727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="Server" elementType="Argument">
+            <stringProp name="Argument.name">Server</stringProp>
+            <stringProp name="Argument.value">apitest.intentwise.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="x-auth-token" elementType="Argument">
+            <stringProp name="Argument.name">x-auth-token</stringProp>
+            <stringProp name="Argument.value">a86c1b84-5d9c-40ff-8b03-dd457d0b753d</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="sizelimit" elementType="Argument">
+            <stringProp name="Argument.name">sizelimit</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="thinkTime" elementType="Argument">
+            <stringProp name="Argument.name">thinkTime</stringProp>
+            <stringProp name="Argument.value">3000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${Server}</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="orgdata.csv" enabled="true">
+        <stringProp name="filename">orgdata.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">organization,businessgroup,account</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="false">
+        <stringProp name="filename">api_data_comparision.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">\t</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
+        <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="es.scheme" elementType="Argument">
+              <stringProp name="Argument.name">es.scheme</stringProp>
+              <stringProp name="Argument.value">http</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.host" elementType="Argument">
+              <stringProp name="Argument.name">es.host</stringProp>
+              <stringProp name="Argument.value">ec2-54-202-191-186.us-west-2.compute.amazonaws.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.port" elementType="Argument">
+              <stringProp name="Argument.name">es.port</stringProp>
+              <stringProp name="Argument.value">9200</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.index" elementType="Argument">
+              <stringProp name="Argument.name">es.index</stringProp>
+              <stringProp name="Argument.value">performance_metrics</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.timestamp" elementType="Argument">
+              <stringProp name="Argument.name">es.timestamp</stringProp>
+              <stringProp name="Argument.value">yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZZ</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.bulk.size" elementType="Argument">
+              <stringProp name="Argument.name">es.bulk.size</stringProp>
+              <stringProp name="Argument.value">100</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.timout.ms" elementType="Argument">
+              <stringProp name="Argument.name">es.timout.ms</stringProp>
+              <stringProp name="Argument.value">200</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.sample.filter" elementType="Argument">
+              <stringProp name="Argument.name">es.sample.filter</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.fields" elementType="Argument">
+              <stringProp name="Argument.name">es.fields</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.test.mode" elementType="Argument">
+              <stringProp name="Argument.name">es.test.mode</stringProp>
+              <stringProp name="Argument.value">info</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.xpack.user" elementType="Argument">
+              <stringProp name="Argument.name">es.xpack.user</stringProp>
+              <stringProp name="Argument.value">elastic</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.xpack.password" elementType="Argument">
+              <stringProp name="Argument.name">es.xpack.password</stringProp>
+              <stringProp name="Argument.value">Intentwise@14</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.parse.all.req.headers" elementType="Argument">
+              <stringProp name="Argument.name">es.parse.all.req.headers</stringProp>
+              <stringProp name="Argument.value">false</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.parse.all.res.headers" elementType="Argument">
+              <stringProp name="Argument.name">es.parse.all.res.headers</stringProp>
+              <stringProp name="Argument.value">false</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.aws.endpoint" elementType="Argument">
+              <stringProp name="Argument.name">es.aws.endpoint</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.aws.region" elementType="Argument">
+              <stringProp name="Argument.name">es.aws.region</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.ssl.truststore.path" elementType="Argument">
+              <stringProp name="Argument.name">es.ssl.truststore.path</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.ssl.truststore.pw" elementType="Argument">
+              <stringProp name="Argument.name">es.ssl.truststore.pw</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.ssl.keystore.path" elementType="Argument">
+              <stringProp name="Argument.name">es.ssl.keystore.path</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.ssl.keystore.pw" elementType="Argument">
+              <stringProp name="Argument.name">es.ssl.keystore.pw</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="GroupType" elementType="Argument">
+              <stringProp name="Argument.name">GroupType</stringProp>
+              <stringProp name="Argument.value">Two</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="TestDate" elementType="Argument">
+              <stringProp name="Argument.name">TestDate</stringProp>
+              <stringProp name="Argument.value">${__time(YYYY/MM/dd,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="CodeVersion" elementType="Argument">
+              <stringProp name="Argument.name">CodeVersion</stringProp>
+              <stringProp name="Argument.value">${__P(Version,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="classname">io.github.delirius325.jmeter.backendlistener.elasticsearch.ElasticsearchBackendClient</stringProp>
+        <stringProp name="TestPlan.comments">${__time(YYYY-MM-dd,)}2019/01/04</stringProp>
+      </BackendListener>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Non Compare Report API -  Type 1" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report API - ${apiName} - Non Compare ${postfix}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">[ &#xd;
+	${metaDataFilter}&#xd;
+	${metaDataSeperator}&#xd;
+	${metricFilter}&#xd;
+]</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/businessgroup/${businessgroup}/${accountType}/${account}${apiConext}?${pageSize}${sortOption}${dateFilter}${additionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Non Compare  Report API -  Type 2" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report API - ${apiName} - Non Compare ${postfix}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">[ &#xd;
+	${metaDataFilter}&#xd;
+	${metaDataSeperator}&#xd;
+	${metricFilter}&#xd;
+]</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/account/${account}${apiConext}?${pageSize}${sortOption}${dateFilter}${additionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Non Compare Metrics API -  Type 1.1" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Metrics API - ${apiName} - Non Compare ${postfix}" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/businessgroup/${businessgroup}/${preaccountType}/${account}${preContext}?${prepageSize}${preSortOption}${predateFilter}${preAdditionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Non Compare Metrics API -  Type 2.1" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Metrics API - ${apiName} - Non Compare ${postfix}" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/${preaccountType}/${account}${preContext}?${prepageSize}${preSortOption}${predateFilter}${preAdditionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Non Compare Total API -  Type 3" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Total API - ${apiName} - Non Compare ${postfix}" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/businessgroup/${businessgroup}/${preaccountType}/${account}${totalAPIContext}?${prepageSize}${preSortOption}${predateFilter}${preAdditionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Non Compare Total API -  Type 3.1" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Total API - ${apiName} - Non Compare ${postfix}" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/${preaccountType}/${account}${totalAPIContext}?${prepageSize}${preSortOption}${predateFilter}${preAdditionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Compare Metrics API -  Type 1.1" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Metrics API - ${apiName} - Compare ${postfix}" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/businessgroup/${businessgroup}/${preaccountType}/${account}${preContext}?${prepageSize}${preSortOption}${predateFilter}&amp;previousStartDate=${__timeShift(YYYY-MM-dd,,-P${actualDuration}D,,)}&amp;previousEndDate=${__timeShift(YYYY-MM-dd,,-P365D,,)}${preAdditionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}
+vars.put(&quot;actualDuration&quot;,Integer.valueOf(vars.get(&quot;duration&quot;)).intValue()+365+&quot;&quot;);</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Compare Reports API -  Type 1" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Report API - ${apiName} - Compare ${postfix}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">[ &#xd;
+	${metaDataFilter}&#xd;
+	${metaDataSeperator}&#xd;
+	${metricFilter}&#xd;
+]</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/businessgroup/${businessgroup}/${accountType}/${account}${apiConext}?${pageSize}${sortOption}${dateFilter}&amp;previousStartDate=${__timeShift(YYYY-MM-dd,,-P${actualDuration}D,,)}&amp;previousEndDate=${__timeShift(YYYY-MM-dd,,-P365D,,)}${additionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}
+vars.put(&quot;actualDuration&quot;,Integer.valueOf(vars.get(&quot;duration&quot;)).intValue()+365+&quot;&quot;);
+log.info(&quot;---------&gt;&quot;+vars.get(&quot;actualDuration&quot;));</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Compare Total API -  Type 3" enabled="false"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Total API - ${apiName} - Compare ${postfix}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">[ &#xd;
+	${metaDataFilter}&#xd;
+	${metaDataSeperator}&#xd;
+	${metricFilter}&#xd;
+]</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/organization/${organization}/businessgroup/${businessgroup}/${accountType}/${account}${totalAPIContext}?${pageSize}${sortOption}${dateFilter}&amp;previousStartDate=${__timeShift(YYYY-MM-dd,,-P${actualDuration}D,,)}&amp;previousEndDate=${__timeShift(YYYY-MM-dd,,-P365D,,)}${additionalOptions}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="x-auth-token" elementType="Header">
+                <stringProp name="Header.name">x-auth-token</stringProp>
+                <stringProp name="Header.value">${x-auth-token}</stringProp>
+              </elementProp>
+              <elementProp name="content-type" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">if(vars.get(&quot;metaDataFilter&quot;).length()&gt;0 &amp;&amp; vars.get(&quot;metricFilter&quot;).length()&gt;0){
+	vars.put(&quot;metaDataSeperator&quot;,&quot;,&quot;);
+}else{
+	vars.put(&quot;metaDataSeperator&quot;,&quot;&quot;);
+}
+vars.put(&quot;actualDuration&quot;,Integer.valueOf(vars.get(&quot;duration&quot;)).intValue()+365+&quot;&quot;);
+log.info(&quot;---------&gt;&quot;+vars.get(&quot;actualDuration&quot;));</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${thinkTime}</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Group 2 - Scenarios" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(Iterations,)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(Group2Load,)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(Rampup,)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="SP and SB Campaigns - Without Compare, Ad Group - Without Compare, SP KWs - Without Compare" enabled="true">
+          <intProp name="InterleaveControl.style">1</intProp>
+        </RandomController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SP and SB Campaigns - Without Compare" enabled="true"/>
+          <hashTree>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.group</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="200186009">totalAPIContext</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-432995648">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="809926590">SP and SB Campaigns</stringProp>
+                  <stringProp name="-1857282415">/allcampaigns</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="-798950587">/allcampaigns/metrics</stringProp>
+                  <stringProp name="-1986358469">&amp;aggregation=day</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="-1334849978">/allcampaigns/total</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Report API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-1713457996">Non Compare Report API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Total API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-521832790">Non Compare Total API -  Type 3</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Ad Group - Without Compare" enabled="true"/>
+          <hashTree>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.group</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="1867190751">metricContext</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="200186009">totalAPIContext</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="749700061">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="1154786370">Ad Group</stringProp>
+                  <stringProp name="1174746198">/adgroup/report</stringProp>
+                  <stringProp name="-1706909625">page=-1&amp;size=10</stringProp>
+                  <stringProp name="-190139176">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="290733133">&amp;dimension=campaign</stringProp>
+                  <stringProp name="-798950587">/allcampaigns/metrics</stringProp>
+                  <stringProp name="1918617057">/adgroup/metrics</stringProp>
+                  <stringProp name="-1986358469">&amp;aggregation=day</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-929787934">/adgroup/total</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-1713457996">Non Compare Report API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Total API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-521832790">Non Compare Total API -  Type 3</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SP KWs - Without Compare" enabled="true"/>
+          <hashTree>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">SP KWs</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/recommendation/keywordbids</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">campaignType=Sponsored%20Products</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">amsaccount</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=day&amp;version=V2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/keyword/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=day&amp;version=V2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="totalAPIContext" elementType="Argument">
+                  <stringProp name="Argument.name">totalAPIContext</stringProp>
+                  <stringProp name="Argument.value">/recommendation/keywordbids/total</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.group</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="200186009">totalAPIContext</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-19928188">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1843837884">SP KWs</stringProp>
+                  <stringProp name="2014906008">/recommendation/keywordbids</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="-2015124863">campaignType=Sponsored%20Products</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="351392390">amsaccount</stringProp>
+                  <stringProp name="201832012">&amp;aggregation=day&amp;version=V2</stringProp>
+                  <stringProp name="-228008306">/keyword/metrics</stringProp>
+                  <stringProp name="201832012">&amp;aggregation=day&amp;version=V2</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="1715098893">/recommendation/keywordbids/total</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Metrics API" enabled="true"/>
+            <hashTree>
+              <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+                <collectionProp name="UserParameters.names">
+                  <stringProp name="1142425732">preaccountType</stringProp>
+                </collectionProp>
+                <collectionProp name="UserParameters.thread_values">
+                  <collectionProp name="1665714095">
+                    <stringProp name="351392390">amsaccount</stringProp>
+                  </collectionProp>
+                </collectionProp>
+                <boolProp name="UserParameters.per_iteration">false</boolProp>
+                <stringProp name="TestPlan.comments">	account	</stringProp>
+              </UserParameters>
+              <hashTree/>
+              <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+                <collectionProp name="ModuleController.node_path">
+                  <stringProp name="764597751">Test Plan</stringProp>
+                  <stringProp name="764597751">Test Plan</stringProp>
+                  <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+                </collectionProp>
+              </ModuleController>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Reports API" enabled="true"/>
+            <hashTree>
+              <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+                <collectionProp name="UserParameters.names">
+                  <stringProp name="1142425732">preaccountType</stringProp>
+                </collectionProp>
+                <collectionProp name="UserParameters.thread_values">
+                  <collectionProp name="1925833969">
+                    <stringProp name="-1177318867">account</stringProp>
+                  </collectionProp>
+                </collectionProp>
+                <boolProp name="UserParameters.per_iteration">false</boolProp>
+                <stringProp name="TestPlan.comments">	account	</stringProp>
+              </UserParameters>
+              <hashTree/>
+              <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+                <collectionProp name="ModuleController.node_path">
+                  <stringProp name="764597751">Test Plan</stringProp>
+                  <stringProp name="764597751">Test Plan</stringProp>
+                  <stringProp name="-909745031">Non Compare  Report API -  Type 2</stringProp>
+                </collectionProp>
+              </ModuleController>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Total API" enabled="true"/>
+            <hashTree>
+              <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+                <collectionProp name="UserParameters.names">
+                  <stringProp name="1142425732">preaccountType</stringProp>
+                </collectionProp>
+                <collectionProp name="UserParameters.thread_values">
+                  <collectionProp name="1925833969">
+                    <stringProp name="-1177318867">account</stringProp>
+                  </collectionProp>
+                </collectionProp>
+                <boolProp name="UserParameters.per_iteration">false</boolProp>
+                <stringProp name="TestPlan.comments">	account	</stringProp>
+              </UserParameters>
+              <hashTree/>
+              <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Total API" enabled="true">
+                <collectionProp name="ModuleController.node_path">
+                  <stringProp name="764597751">Test Plan</stringProp>
+                  <stringProp name="764597751">Test Plan</stringProp>
+                  <stringProp name="1029863917">Non Compare Total API -  Type 3.1</stringProp>
+                </collectionProp>
+              </ModuleController>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="SB KWs - Without Compare, SP Products - Without Compare, SP AT - Without Compare" enabled="true">
+          <intProp name="InterleaveControl.style">1</intProp>
+        </RandomController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SB KWs - Without Compare" enabled="true"/>
+          <hashTree>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">SB KWs</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/recommendation/headlineKeyword</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">&amp;page=0&amp;size=10</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;version=V2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="metricContext" elementType="Argument">
+                  <stringProp name="Argument.name">metricContext</stringProp>
+                  <stringProp name="Argument.value">/recommendation/headlineKeyword</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/headlinekeyword/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=day&amp;version=V2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">amsaccount</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.group</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="1867190751">metricContext</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="1764407468">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1856767178">SB KWs</stringProp>
+                  <stringProp name="-1597186290">/recommendation/headlineKeyword</stringProp>
+                  <stringProp name="1228172957">&amp;page=0&amp;size=10</stringProp>
+                  <stringProp name="-190139176">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="-235205529">&amp;version=V2</stringProp>
+                  <stringProp name="-1597186290">/recommendation/headlineKeyword</stringProp>
+                  <stringProp name="1346432314">/headlinekeyword/metrics</stringProp>
+                  <stringProp name="201832012">&amp;aggregation=day&amp;version=V2</stringProp>
+                  <stringProp name="351392390">amsaccount</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Report API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-909745031">Non Compare  Report API -  Type 2</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SP Products - Without Compare" enabled="true"/>
+          <hashTree>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="200186009">totalAPIContext</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-690794855">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-307403801">SP Products</stringProp>
+                  <stringProp name="1387523317">/sponsoredProducts/report</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="-190139176">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="290733133">&amp;dimension=campaign</stringProp>
+                  <stringProp name="-75226846">/sponsoredProducts/metrics</stringProp>
+                  <stringProp name="201832012">&amp;aggregation=day&amp;version=V2</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-2031302813">/sponsoredProducts/total</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+              <stringProp name="TestPlan.comments">	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</stringProp>
+            </UserParameters>
+            <hashTree/>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">SP Products</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/sponsoredProducts/report</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;dimension=campaign</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/sponsoredProducts/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=day&amp;version=V2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="totalAPIContext" elementType="Argument">
+                  <stringProp name="Argument.name">totalAPIContext</stringProp>
+                  <stringProp name="Argument.value">/sponsoredProducts/total</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.group</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Meterics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-1713457996">Non Compare Report API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Total API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-521832790">Non Compare Total API -  Type 3</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SP AT - Without Compare" enabled="true"/>
+          <hashTree>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">SP AT</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/targetingclauses/report</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;targetingExpressionType=auto</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/targetingclauses/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=day&amp;targetingExpressionType=auto</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.all</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="2085817698">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="79068374">SP AT</stringProp>
+                  <stringProp name="1563700897">/targetingclauses/report</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="-190139176">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1895747439">&amp;targetingExpressionType=auto</stringProp>
+                  <stringProp name="1091310838">/targetingclauses/metrics</stringProp>
+                  <stringProp name="335325716">&amp;aggregation=day&amp;targetingExpressionType=auto</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-1713457996">Non Compare Report API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="SP PT - Without Compare, Placements - Without Compare, STs - Without Compare" enabled="true">
+          <intProp name="InterleaveControl.style">1</intProp>
+        </RandomController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SP PT - Without Compare" enabled="true"/>
+          <hashTree>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">SP PT</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/targetingclauses/report</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/targetingclauses/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=day</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="totalAPIContext" elementType="Argument">
+                  <stringProp name="Argument.name">totalAPIContext</stringProp>
+                  <stringProp name="Argument.value">/sponsoredProducts/total</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="200186009">totalAPIContext</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="503936227">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="79068839">SP PT</stringProp>
+                  <stringProp name="1563700897">/targetingclauses/report</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="-190139176">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="1091310838">/targetingclauses/metrics</stringProp>
+                  <stringProp name="-1986358469">&amp;aggregation=day</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-2031302813">/sponsoredProducts/total</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.all</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-1713457996">Non Compare Report API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Total API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-521832790">Non Compare Total API -  Type 3</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Placements - Without Compare" enabled="true"/>
+          <hashTree>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-464109472">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="1739990606">Placements</stringProp>
+                  <stringProp name="958619913">/campaigns/placements</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="-646058646">&amp;sort=totalSpend,desc</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="-235204537">&amp;version=v2</stringProp>
+                  <stringProp name="-706067011">/campaigns/placements/metrics</stringProp>
+                  <stringProp name="-1447001035">&amp;aggregation=week</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+              <stringProp name="TestPlan.comments">	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</stringProp>
+            </UserParameters>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.all</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">Placements</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/campaigns/placements</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=totalSpend,desc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;version=v2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/campaigns/placements/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=week</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-1713457996">Non Compare Report API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="STs - Without Compare" enabled="true"/>
+          <hashTree>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-1388989260">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="82482">STs</stringProp>
+                  <stringProp name="733112195">/searchterm</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="457993359">&amp;sort=spend,desc&amp;duration=FOURTEEN_DAY&amp;targetingType=auto</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="-706067011">/campaigns/placements/metrics</stringProp>
+                  <stringProp name="-1447001035">&amp;aggregation=week</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.all</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">STs</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/searchterm</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=spend,desc&amp;duration=FOURTEEN_DAY&amp;targetingType=auto</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/campaigns/placements/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=week</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-909745031">Non Compare  Report API -  Type 2</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="Placements - Compare, STs - Compare" enabled="true">
+          <intProp name="InterleaveControl.style">1</intProp>
+        </RandomController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Placements - Compare" enabled="true"/>
+          <hashTree>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.all</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">Placements</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/campaigns/placements</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=totalSpend,desc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;version=v2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/campaigns/placements/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=week</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1843290845">Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1735197590">Compare Reports API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-464109472">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="1739990606">Placements</stringProp>
+                  <stringProp name="958619913">/campaigns/placements</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="-646058646">&amp;sort=totalSpend,desc</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="-235204537">&amp;version=v2</stringProp>
+                  <stringProp name="-706067011">/campaigns/placements/metrics</stringProp>
+                  <stringProp name="-1447001035">&amp;aggregation=week</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+              <stringProp name="TestPlan.comments">	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</stringProp>
+            </UserParameters>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="STs - Compare" enabled="true"/>
+          <hashTree>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.all</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">STs</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/searchterm</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=spend,desc&amp;duration=FOURTEEN_DAY&amp;targetingType=auto</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/campaigns/placements/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=week</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-909745031">Non Compare  Report API -  Type 2</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="814088500">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="82482">STs</stringProp>
+                  <stringProp name="733112195">/searchterm</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="457993359">&amp;sort=spend,desc&amp;duration=FOURTEEN_DAY&amp;targetingType=auto</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="-706067011">/campaigns/placements/metrics</stringProp>
+                  <stringProp name="-1447001035">&amp;aggregation=week</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="0"></stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+              <stringProp name="TestPlan.comments">	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</stringProp>
+            </UserParameters>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="SP AT - Compare, SP PT - Compare" enabled="true">
+          <intProp name="InterleaveControl.style">1</intProp>
+        </RandomController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SP AT - Compare" enabled="true"/>
+          <hashTree>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">SP AT</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/targetingclauses/report</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;targetingExpressionType=auto</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/targetingclauses/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=day&amp;targetingExpressionType=auto</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.all</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-1713457996">Non Compare Report API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="1145566570">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="79068374">SP AT</stringProp>
+                  <stringProp name="1563700897">/targetingclauses/report</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="-190139176">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1895747439">&amp;targetingExpressionType=auto</stringProp>
+                  <stringProp name="1091310838">/targetingclauses/metrics</stringProp>
+                  <stringProp name="335325716">&amp;aggregation=day&amp;targetingExpressionType=auto</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SP PT - Compare" enabled="true"/>
+          <hashTree>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="API Variables" enabled="false">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apiName" elementType="Argument">
+                  <stringProp name="Argument.name">apiName</stringProp>
+                  <stringProp name="Argument.value">SP PT</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="apiConext" elementType="Argument">
+                  <stringProp name="Argument.name">apiConext</stringProp>
+                  <stringProp name="Argument.value">/targetingclauses/report</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="pageSize" elementType="Argument">
+                  <stringProp name="Argument.name">pageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="sortOption" elementType="Argument">
+                  <stringProp name="Argument.name">sortOption</stringProp>
+                  <stringProp name="Argument.value">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="dateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">dateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="accountType" elementType="Argument">
+                  <stringProp name="Argument.name">accountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.desc">amsaccoun</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="additionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">additionalOptions</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preContext" elementType="Argument">
+                  <stringProp name="Argument.name">preContext</stringProp>
+                  <stringProp name="Argument.value">/targetingclauses/metrics</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preAdditionalOptions" elementType="Argument">
+                  <stringProp name="Argument.name">preAdditionalOptions</stringProp>
+                  <stringProp name="Argument.value">&amp;aggregation=day</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preaccountType" elementType="Argument">
+                  <stringProp name="Argument.name">preaccountType</stringProp>
+                  <stringProp name="Argument.value">account</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="prepageSize" elementType="Argument">
+                  <stringProp name="Argument.name">prepageSize</stringProp>
+                  <stringProp name="Argument.value">page=0&amp;size=250</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="preSortOption" elementType="Argument">
+                  <stringProp name="Argument.name">preSortOption</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="predateFilter" elementType="Argument">
+                  <stringProp name="Argument.name">predateFilter</stringProp>
+                  <stringProp name="Argument.value">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="api_data_comparision.csv" enabled="true">
+              <stringProp name="filename">api_data_comparision.csv</stringProp>
+              <stringProp name="fileEncoding"></stringProp>
+              <stringProp name="variableNames">postfix,duration,metaDataFilter,metricFilter</stringProp>
+              <boolProp name="ignoreFirstLine">true</boolProp>
+              <stringProp name="delimiter">\t</stringProp>
+              <boolProp name="quotedData">false</boolProp>
+              <boolProp name="recycle">true</boolProp>
+              <boolProp name="stopThread">false</boolProp>
+              <stringProp name="shareMode">shareMode.all</stringProp>
+            </CSVDataSet>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Metrics API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="1567202666">Non Compare Metrics API -  Type 1.1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Reports API" enabled="true">
+              <collectionProp name="ModuleController.node_path">
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="764597751">Test Plan</stringProp>
+                <stringProp name="-1713457996">Non Compare Report API -  Type 1</stringProp>
+              </collectionProp>
+            </ModuleController>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="-800601147">apiName</stringProp>
+                <stringProp name="-880514023">apiConext</stringProp>
+                <stringProp name="859428656">pageSize</stringProp>
+                <stringProp name="-831374413">sortOption</stringProp>
+                <stringProp name="149531846">dateFilter</stringProp>
+                <stringProp name="866168583">accountType</stringProp>
+                <stringProp name="2120314252">preContext</stringProp>
+                <stringProp name="-1415265260">preAdditionalOptions</stringProp>
+                <stringProp name="1142425732">preaccountType</stringProp>
+                <stringProp name="-1627638061">prepageSize</stringProp>
+                <stringProp name="-907208010">preSortOption</stringProp>
+                <stringProp name="-1919766615">predateFilter</stringProp>
+                <stringProp name="1185217655">additionalOptions</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="1114808345">
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="79068839">SP PT</stringProp>
+                  <stringProp name="1563700897">/targetingclauses/report</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="-190139176">&amp;sort=spend,desc</stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1091310838">/targetingclauses/metrics</stringProp>
+                  <stringProp name="-1986358469">&amp;aggregation=day</stringProp>
+                  <stringProp name="-1177318867">account</stringProp>
+                  <stringProp name="1639086709">page=0&amp;size=250</stringProp>
+                  <stringProp name="0"></stringProp>
+                  <stringProp name="2056251024">&amp;startDate=${__timeShift(YYYY-MM-dd,,-P${duration}D,,)}&amp;endDate=${__time(YYYY-MM-dd,)}</stringProp>
+                  <stringProp name="0"></stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
